@@ -45,7 +45,7 @@ for i in din:#Actually checking for final names in names dictionary
     if i.strip() in posscomb:
         finnames.append(i.strip())
 
-if i == []:#Writing actual output to file
+if finnames == []:#Writing actual output to file
     fout.write("NONE")
 
 else:
