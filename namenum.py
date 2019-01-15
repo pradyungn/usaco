@@ -46,7 +46,7 @@ for i in din:#Actually checking for final names in names dictionary
         finnames.append(i.strip())
 
 if finnames == []:#Writing actual output to file
-    fout.write("NONE")
+    fout.write("NONE\n")
 
 else:
     for i in finnames:
