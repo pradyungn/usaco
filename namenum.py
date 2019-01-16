@@ -35,9 +35,14 @@ for i in number:
 for i in list(itertools.product(*convnum)):#Using itertools to derive all possible combinations in my list of lists
     temp = "".join(i)+'\n'#Concatenating the list of strings into one string w newline character
     din = open('dict.txt','r')#Opening dict, checking for all possible matches
-    if temp in din:
-        finnames.append(temp)
+    for f in din:
+        if f == temp:
+            finnames.append(temp)
+        del(f)
+
     din.close()
+    del(i)
+
 
 
 
