@@ -6,7 +6,6 @@ TASK: namenum
 
 fin = open("namenum.in", "r")#Initialize input and output of files
 fout = open("namenum.out", "a")
-din = open("dict.txt", "r")
 
 import itertools#importing module to derive all possible combinations of set of strings
 
@@ -28,29 +27,26 @@ for i in rawnum:#Conversion from string into list of single digit strings
 
 
 convnum = []#Converted number list
+finnames = []
 
-for i in number:#Adding full converted number to string possibilities into new set
+for i in number:
     convnum.append(convertdic[i])
 
-rawposscomb = list(itertools.product(*convnum))#Using itertools to derive all possible combinations in my list of lists
+for i in list(itertools.product(*convnum)):#Using itertools to derive all possible combinations in my list of lists
+    temp = "".join(i)+'\n'#Concatenating the list of strings into one string w newline character
+    din = open('dict.txt','r')#Opening dict, checking for all possible matches
+    if temp in din:
+        finnames.append(temp)
+    din.close()
 
-posscomb=[]
 
-for i in rawposscomb:#Condense lists of string combinations into single strings
-    posscomb.append("".join(i))
 
-finnames = []#List of final names
-
-for i in din:#Actually checking for final names in names dictionary
-    if i.strip() in posscomb:
-        finnames.append(i.strip())
-
-if finnames == []:#Writing actual output to file
+if finnames == []:
     fout.write("NONE\n")
 
 else:
     for i in finnames:
-        fout.write(i+'\n')
+        fout.write(i)
 
 fin.close()#Closing file connections
 fout.close()

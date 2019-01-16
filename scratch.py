@@ -1,6 +1,6 @@
-fout = open("namenumdict.txt","a")
+din = open('dict.txt','r')
 
-for i in range(2,5):
-    fout.write(str(i)+'\n')
+for i in din:
+    print(i)
 
-fout.close()
+din.close()
